@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>SoundWave - Music Streaming</title>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="logo-section">
+                    <h1>🎵 SoundWave</h1>
+                    <p class="subtitle">Your Personal Music Streaming Experience</p>
+                </div>
+                <div class="user-section">
+                    <span id="userDisplay">User</span>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
+            </div>
+            <div class="nav-tabs">
+                <button class="tab-btn active" onclick="switchPage('player')">🎵 Player</button>
+                <button class="tab-btn" onclick="switchPage('upload')">⬆️ Upload Songs</button>
+            </div>
+        </header>
+
+        <!-- Player Page -->
+        <div id="playerPage" class="page active">
+        <div class="main-grid">
+            <!-- Artists Panel -->
+            <div class="panel">
+                <h2>Artists</h2>
+                <div class="artist-list" id="artistList">
+                    <div class="empty-state">No artists added yet</div>
+                </div>
+                <div class="controls">
+                    <input type="text" id="artistInput" placeholder="Add new artist...">
+                </div>
+                <button onclick="addArtist()">Add Artist</button>
+            </div>
+
+            <!-- Songs Panel -->
+            <div class="panel">
+                <h2>Available Songs</h2>
+                <div class="song-list" id="songList">
+                    <div class="empty-state">No songs added yet</div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="songTitle" placeholder="Song title...">
+                    <input type="text" id="songArtist" placeholder="Artist...">
+                </div>
+                <button onclick="addSong()">Add Song</button>
+            </div>
+
+            <!-- Playlists Panel -->
+            <div class="panel">
+                <h2>My Playlists</h2>
+                <div id="playlistsList" class="song-list">
+                    <div class="empty-state">No playlists created yet</div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="playlistName" placeholder="New playlist name...">
+                </div>
+                <button onclick="createPlaylist()">Create Playlist</button>
+            </div>
+        </div>
+
+        <!-- Player -->
+        <div class="player">
+            <div class="now-playing">
+                <div class="album-art" id="albumArt">♪</div>
+                <div class="track-info">
+                    <h3 id="trackTitle">No Song Playing</h3>
+                    <p class="track-artist" id="trackArtist">Select a song to play</p>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button class="btn-secondary" onclick="previousTrack()">⏮ Previous</button>
+                <button id="playBtn" onclick="togglePlay()">▶ Play</button>
+                <button class="btn-secondary" onclick="nextTrack()">Next ⏭</button>
+            </div>
+
+            <div class="playlist-display">
+                <h3>Current Playlist</h3>
+                <div id="currentPlaylist" class="saved-playlists">
+                    <div class="empty-state">Add songs to create a playlist</div>
+                </div>
+                <div class="controls" style="margin-top: 15px;">
+                    <button class="btn-secondary" onclick="saveCurrentPlaylist()">💾 Save Playlist</button>
+                    <button class="btn-secondary" onclick="clearPlaylist()">🗑 Clear</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Upload Songs Page -->
+        <div id="uploadPage" class="page">
+            <div class="panel" style="max-width: 600px; margin: 0 auto;">
+                <h2>Upload Songs to Playlist</h2>
+                <p style="color: #b0b0b0; margin-bottom: 20px;">Select a playlist and add audio files</p>
+                
+                <label style="display: block; margin-bottom: 20px;">
+                    <span style="display: block; margin-bottom: 10px; font-weight: 600;">Select Playlist:</span>
+                    <select id="playlistSelect" style="width: 100%; padding: 12px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: white; font-size: 1em;">
+                        <option value="">-- Choose a playlist --</option>
+                    </select>
+                </label>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: flex; align-items: center; justify-content: center; padding: 40px; border: 2px dashed rgba(102, 126, 234, 0.5); border-radius: 12px; cursor: pointer; background: rgba(102, 126, 234, 0.05); transition: all 0.3s ease;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; margin-bottom: 10px;">🎵</div>
+                            <div>Click to select audio files from music folder</div>
+                        </div>
+                        <input type="file" id="audioFiles" multiple accept="audio/*" style="display: none;" onchange="handleFileSelect()">
+                    </label>
+                </div>
+
+                <div id="filePreview" style="margin-bottom: 20px;">
+                    <div class="empty-state">No files selected</div>
+                </div>
+
+                <div class="controls">
+                    <button onclick="uploadSongsToPlaylist()">⬆️ Add Songs to Playlist</button>
+                    <button class="btn-secondary" onclick="clearFileSelection()">Clear Selection</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
