@@ -1,0 +1,199 @@
+                       LAYOUT FOR THE PROJECT CineScape
+-----------------------------------------------------------------------------------
+
+ cinescape/
+│
+├── README.md
+├── LICENSE
+├── package.json
+├── .gitignore
+├── .env.example
+│
+├── docs/
+│   ├── architecture.md
+│   ├── api-spec.md
+│   └── deployment.md
+│
+├── frontend/
+│   │
+│   ├── index.html
+│   ├── movies.html
+│   ├── movie-details.html
+│   ├── booking.html
+│   ├── payment.html
+│   ├── ticket.html
+│   ├── login.html
+│   ├── signup.html
+│   ├── profile.html
+│   ├── admin.html
+│   │
+│   ├── css/
+│   │   ├── style.css
+│   │   ├── navbar.css
+│   │   ├── layout.css
+│   │   ├── movies.css
+│   │   ├── booking.css
+│   │   ├── ticket.css
+│   │   ├── admin.css
+│   │   ├── auth.css
+│   │   └── responsive.css
+│   │
+│   ├── js/
+│   │   ├── app.js
+│   │   ├── config.js
+│   │   ├── api.js
+│   │   ├── router.js
+│   │   │
+│   │   ├── auth/
+│   │   │   ├── login.js
+│   │   │   ├── signup.js
+│   │   │   ├── logout.js
+│   │   │   └── auth-utils.js
+│   │   │
+│   │   ├── movies/
+│   │   │   ├── movies.js
+│   │   │   ├── movie-details.js
+│   │   │   ├── search.js
+│   │   │   └── filter.js    
+│   │   │
+│   │   ├── booking/
+│   │   │   ├── booking.js
+│   │   │   ├── seats.js
+│   │   │   ├── seat-lock.js
+│   │   │   └── price-calc.js
+│   │   │
+│   │   ├── payment/
+│   │   │   ├── payment.js
+│   │   │   ├── razorpay.js
+│   │   │   └── payment-verify.js
+│   │   │
+│   │   ├── ticket/
+│   │   │   ├── ticket.js
+│   │   │   ├── qr-display.js
+│   │   │   └── download-ticket.js
+│   │   │
+│   │   ├── admin/
+│   │   │   ├── admin.js
+│   │   │   ├── add-movie.js
+│   │   │   ├── edit-movie.js
+│   │   │   ├── delete-movie.js
+│   │   │   └── bookings.js
+│   │   │
+│   │   ├── ai/
+│   │   │   ├── recommend.js
+│   │   │   ├── history.js
+│   │   │   └── similarity.js
+│   │   │
+│   │   └── utils/
+│   │       ├── dom.js
+│   │       ├── storage.js
+│   │       ├── format.js
+│   │       └── validators.js
+│   │
+│   ├── components/
+│   │   ├── navbar.html
+│   │   ├── footer.html
+│   │   ├── movie-card.html
+│   │   ├── seat-map.html
+│   │   ├── loader.html
+│   │   └── modal.html
+│   │
+│   ├── images/
+│   │   ├── logo.png
+│   │   ├── banner.jpg
+│   │   ├── placeholder-poster.jpg
+│   │   └── icons/
+│   │       ├── icon-192.png
+│   │       └── icon-512.png
+│   │
+│   ├── assets/
+│   │   ├── fonts/
+│   │   └── icons/
+│   │
+│   └── pwa/
+│       ├── manifest.json
+│       └── service-worker.js
+│
+│
+├── backend/
+│   │
+│   ├── server.js
+│   ├── app.js
+│   │
+│   ├── config/
+│   │   ├── database.js
+│   │   ├── razorpay.js
+│   │   ├── email.js
+│   │   └── ai.js
+│   │
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── movieRoutes.js
+│   │   ├── bookingRoutes.js
+│   │   ├── paymentRoutes.js
+│   │   ├── ticketRoutes.js
+│   │   ├── adminRoutes.js
+│   │   └── aiRoutes.js
+│   │
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── movieController.js
+│   │   ├── bookingController.js
+│   │   ├── paymentController.js
+│   │   ├── ticketController.js
+│   │   ├── adminController.js
+│   │   └── aiController.js
+│   │
+│   ├── models/
+│   │   ├── User.js
+│   │   ├── Movie.js
+│   │   ├── Booking.js
+│   │   ├── Seat.js
+│   │   ├── Payment.js
+│   │   └── Review.js
+│   │
+│   ├── middlewares/
+│   │   ├── authMiddleware.js
+│   │   ├── adminMiddleware.js
+│   │   ├── paymentVerify.js
+│   │   └── errorHandler.js
+│   │
+│   ├── services/
+│   │   ├── emailService.js
+│   │   ├── qrService.js
+│   │   ├── paymentService.js
+│   │   ├── recommendationService.js
+│   │   └── seatService.js
+│   │
+│   ├── utils/
+│   │   ├── generateQR.js
+│   │   ├── generateTicketId.js
+│   │   ├── logger.js
+│   │   └── validators.js
+│   │
+│   ├── templates/
+│   │   ├── ticketEmail.html
+│   │   ├── bookingConfirmation.html
+│   │   └── passwordReset.html
+│   │
+│   ├── uploads/
+│   │   └── posters/
+│   │
+│   └── logs/
+│       └── server.log
+│
+│
+├── scripts/
+│   ├── seedMovies.js
+│   ├── createAdmin.js
+│   └── cleanup.js
+│
+├── tests/
+│   ├── api/
+│   ├── integration/
+│   └── unit/
+│
+└── deployment/
+    ├── netlify.toml
+    ├── render.yaml
+    └── docker-compose.yml

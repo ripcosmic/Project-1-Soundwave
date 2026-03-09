@@ -1,8 +1,17 @@
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
+const spinnerOverlay = document.getElementById('spinnerOverlay');
 
 let pendingLoginEmail = null;
+
+// Function to show spinner and redirect
+function showSpinnerAndRedirect(redirectPath) {
+    spinnerOverlay.classList.add('show');
+    setTimeout(() => {
+        window.location.href = redirectPath;
+    }, 1500);
+}
 
 registerBtn.addEventListener('click', () => {
     container.classList.add("active");
@@ -121,12 +130,10 @@ if(signupBtn){
 
         accounts.push({name, email, password});
         saveAccounts(accounts);
-        signupMessage.textContent = 'Account created. Redirecting...';
+        signupMessage.textContent = 'Account created successfully!';
         signupMessage.style.color = 'green';
         localStorage.setItem('soundwave_current', email);
-        setTimeout(() => {
-            window.location.href = '../menu-contents/index.html';
-        }, 800);
+        showSpinnerAndRedirect('../menu-contents/index.html');
     });
 }
 
@@ -182,13 +189,12 @@ if(verifyOtpBtn){
         const verified = await verifyOTPWithServer(pendingLoginEmail, otp);
         
         if (verified) {
-            otpMessage.textContent = 'OTP verified! Redirecting...';
+            otpMessage.textContent = 'OTP verified successfully!';
             otpMessage.style.color = 'green';
             localStorage.setItem('soundwave_current', pendingLoginEmail);
-            setTimeout(() => {
-                window.location.href = '../menu-contents/index.html';
-            }, 500);
-        } else {
+            showSpinnerAndRedirect('../menu-contents/index.html');
+        } 
+        else {
             otpMessage.textContent = 'Invalid OTP. Please try again.';
             otpMessage.style.color = 'red';
         }
