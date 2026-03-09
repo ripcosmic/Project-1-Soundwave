@@ -1,1 +1,0 @@
-This content for the code of the new project "Soundwave" shall not be copied, duplicated or use surplus code to change the code's data. If code used in other websites is foun d using this code, they will be punished.
